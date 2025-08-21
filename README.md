@@ -1,6 +1,6 @@
 # RL Tank Defense Game
-This project was developed by Jeremy Gerster on 14 Dec 2024 as part of the course: *CE6127 Artificial Intelligence in Game Design*, NTU Singapore. The goal of the project was to develop a Deep RL tank defense game, analyze training progress, and tune hyperparameters for performance.<br> 
-The project is built on https://github.com/sascharo/24s1-ce6127-ml-r21-asgmt
+This project was developed by Jeremy Gerster on 14 Dec 2024 as part of the course: *CE6127 Artificial Intelligence in Game Design*, NTU Singapore. The goal was to design a Deep RL tank defense game, analyze training progress, and tune hyperparameters for performance.<br> 
+The implementation builds on the course tutorial: https://github.com/sascharo/24s1-ce6127-ml-r21-asgmt
 
 ---
 
@@ -13,9 +13,9 @@ https://github.com/user-attachments/assets/fb02d4ab-451a-4c50-ace1-7b3fd8762ba1
 ## Setup
 - Open `RLTankDefense` in Unity 2022.3 LTS 
 - choose execution mode in Inspector → Tank → Behavior Parameters
- - default (for training) 
- - Inference Only (needs trained onnx model) 
- - Heuristic Only (lets you control tank yourself)
+  - Default (for training) 
+  - Inference Only (needs trained onnx model) 
+  - Heuristic Only (lets you control tank yourself)
 - Press Play.
 
 
@@ -28,7 +28,8 @@ pip install torch torchvision torchaudio
 ```
 
 #### Install ML-Agents
-- Clone (or download and unpack) the latest ML-Agents (>=R21) from: https://github.com/Unity-Technologies/ml-agents.git
+- Clone (or download and unpack) the latest ML-Agents (>=R21) from:<br> 
+https://github.com/Unity-Technologies/ml-agents.git
 
 - In ml-agents-develop run:
 ```bash
@@ -37,7 +38,7 @@ python -m pip install -e ./ml-agents
 ```
 
 #### Run training
-- choose #parallel training simulations in:
+- choose #parallel training simulations in:<br> 
 Inspector → EnemySpawnPointEnv → Simulation Duplicator → Total Simulations
 
 - Run inside RLTankDefense:
@@ -48,7 +49,7 @@ Inspector → EnemySpawnPointEnv → Simulation Duplicator → Total Simulations
 
 
 ### Parameters and Model
-Training parameters: `RLTankDefense/configs/tank-configs.yaml`
+Training parameters: `RLTankDefense/configs/tank-configs.yaml`<br> 
 Saved models: `results/…/*.nn`
 
 ---
@@ -79,19 +80,19 @@ The agent was first trained with flying tanks and later extended with homing mis
 Initial runs showed unstable learning: cumulative rewards fluctuated around -10, episode lengths varied widely, and policy updates were inconsistent. This indicated difficulties in stable exploration and reward prediction.  
 
 <p align="center">
-  <img src="sources_readme/init_training1.png" alt="init_training1" width="250", height="200">
-  <img src="sources_readme/init_training2.png" alt="init_training2" width="250", height="200">
+  <img src="sources_readme/init_training1.png" alt="init_training1" width="250">
+  <img src="sources_readme/init_training2.png" alt="init_training2" width="250", height="300">
 </p>
 
 Key adjustments: a slightly lower learning rate, larger batch and buffer sizes, reduced network depth, and higher curiosity strength. Entropy and reward signals were also tuned to encourage exploration and stabilize updates.  
 
-<p align="center"><img src="sources_readme/final_configs.png" alt="final_configs" width="500"></p>
+<p align="center"><img src="sources_readme/final_configs.png" alt="final_configs" width="250"></p>
 
-With these changes, the final version showed higher cumulative rewards, longer and more stable episodes, lower curiosity losses, and reduced policy loss, which enabled the agent to consistently win.  
+With these changes, the final version showed higher cumulative rewards, longer and more stable episodes, lower curiosity losses, and reduced policy loss, which enabled the agent to win consistently.  
 
 <p align="center">
-  <img src="sources_readme/final_training1.png" alt="final_training1" width="250", height="180">
-  <img src="sources_readme/final_training2.png" alt="final_training2" width="250", height="180">
+  <img src="sources_readme/final_training1.png" alt="final_training1" width="250">
+  <img src="sources_readme/final_training2.png" alt="final_training2" width="250", height="500">
 </p>
 
 
