@@ -1,5 +1,5 @@
 # RL Tank Defense Game
-This project was developed by Jeremy Gerster on 14 Dec 2024 as part of the course: *CE6127 Artificial Intelligence in Game Design*, NTU Singapore. The goal was to design a Deep RL tank defense game, analyze training progress, and tune hyperparameters for performance.<br> 
+This project was developed by Jeremy Gerster, 14 Dec 2024, as part of the course: *CE6127 Artificial Intelligence in Game Design*, NTU Singapore. The goal was to design a Deep RL tank defense game, analyze training progress, and tune hyperparameters for performance.<br> 
 The implementation builds on the course tutorial: https://github.com/sascharo/24s1-ce6127-ml-r21-asgmt
 
 ---
@@ -57,7 +57,8 @@ Saved models: `results/…/*.nn`
 ## Game Rules
 <p align="center"><img src="sources_readme/game.png" alt="Metrics" width="500"></p><br>  
 
-The AI tank moves horizontally at the bottom of the field and shoots vertically with raycast. The goal is to reach 20 points.  
+The AI tank moves horizontally at the bottom of the field and shoots vertically with raycast.<br>
+The goal is to reach 20 points.  
 
 - **Blue tanks (enemies):** +2 reward for shooting, –3 for colliding, can fly.  
 - **Yellow tanks (friendlies):** –1 reward for shooting, +1 for colliding.  
