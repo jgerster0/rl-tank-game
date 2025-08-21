@@ -80,8 +80,8 @@ The agent was first trained with flying tanks and later extended with homing mis
 Initial runs showed unstable learning: cumulative rewards fluctuated around -10, episode lengths varied widely, and policy updates were inconsistent. This indicated difficulties in stable exploration and reward prediction.  
 
 <p align="center">
-  <img src="sources_readme/init_training1.png" alt="init_training1" width="250">
-  <img src="sources_readme/init_training2.png" alt="init_training2" width="250">
+  <img src="sources_readme/init_training1.png" alt="init_training1" width="400">
+  <img src="sources_readme/init_training2.png" alt="init_training2" width="400">
 </p>
 
 Key adjustments: a slightly lower learning rate, larger batch and buffer sizes, reduced network depth, and higher curiosity strength. Entropy and reward signals were also tuned to encourage exploration and stabilize updates.  
@@ -91,8 +91,8 @@ Key adjustments: a slightly lower learning rate, larger batch and buffer sizes, 
 With these changes, the final version showed higher cumulative rewards, longer and more stable episodes, lower curiosity losses, and reduced policy loss, which enabled the agent to win consistently.  
 
 <p align="center">
-  <img src="sources_readme/final_training1.png" alt="final_training1" width="250">
-  <img src="sources_readme/final_training2.png" alt="final_training2" width="250">
+  <img src="sources_readme/final_training1.png" alt="final_training1" width="400">
+  <img src="sources_readme/final_training2.png" alt="final_training2" width="400">
 </p>
 
 
