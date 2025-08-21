@@ -1,45 +1,55 @@
 # RL Tank Defense Game
-This project was developed by Jeremy Gerster on 14 Dec 2024 as part of the course: *CE6127 Artificial Intelligence in Game Design*, NTU Singapore. The goal of the project was to develop a Deep Reinforcement Learning (DRL) Tank Defense Game as well analyze the training progression and tune the various hyperparameters to improve training performance. The project is based on https://github.com/sascharo/24s1-ce6127-ml-r21-asgmt
+This project was developed by Jeremy Gerster on 14 Dec 2024 as part of the course: *CE6127 Artificial Intelligence in Game Design*, NTU Singapore. The goal of the project was to develop a Deep RL tank defense game, analyze training progress, and tune hyperparameters for performance.<br> 
+The project is built on https://github.com/sascharo/24s1-ce6127-ml-r21-asgmt
 
 ---
 
 ## Demo:
 
-
+https://github.com/user-attachments/assets/fb02d4ab-451a-4c50-ace1-7b3fd8762ba1
 
 ---
 
 ## Setup
+- Open `RLTankDefense` in Unity 2022.3 LTS 
+- choose execution mode in Inspector → Tank → Behavior Parameters
+ - default (for training) 
+ - Inference Only (needs trained onnx model) 
+ - Heuristic Only (lets you control tank yourself)
+- Press Play.
 
-### Installing PyTorch
+
+### Setup for Training
+
+#### Install PyTorch
 ```bash
 # for macOS
 pip install torch torchvision torchaudio
 ```
 
-### Clone ML-Agents and Installing Environment Packages 
+#### Install ML-Agents
+- Clone (or download and unpack) the latest ML-Agents (>=R21) from: https://github.com/Unity-Technologies/ml-agents.git
 
-- Clone (or download and unpack) the latest ML-Agents (>=R21)
-from: https://github.com/Unity-Technologies/ml-agents.git
-
-- In ml-agents-develop run (for training only):
+- In ml-agents-develop run:
 ```bash
 python -m pip install -e ./ml-agents-envs
 python -m pip install -e ./ml-agents
 ```
 
-Then open RLTankDefense in unity
+#### Run training
+- choose #parallel training simulations in:
+Inspector → EnemySpawnPointEnv → Simulation Duplicator → Total Simulations
 
-### Parameters and Inference
-- Parameter configs for RL can be found in RLTankDefense/configs/tank-configs.yaml
-- 
+- Run inside RLTankDefense:
+    ```bash
+    mlagents-learn configs/tank-configs.yaml 
+    ```
+- Then press play in unity and wait for it to train.
 
-### Training
-Run inside RLTankDefense:<br>
-```bash
-mlagents-learn configs/tank-configs.yaml 
-```
-Then press play and wait for it to train.
+
+### Parameters and Model
+Training parameters: `RLTankDefense/configs/tank-configs.yaml`
+Saved models: `results/…/*.nn`
 
 ---
 
@@ -58,9 +68,9 @@ The AI tank moves horizontally at the bottom of the field and shoots vertically 
 ## Project Progression
 The project was developed in three stages:  
 
-1. **Basic version** – initial setup, Markov Decision Process definition, simple heuristics.  
-2. **Optimized version** – parallel training with multiple environments, hyperparameter tuning to meet baseline performance.  
-3. **Final version** – extended gameplay with vertical shooting, flying enemies, and homing missiles, adding significant complexity to the agent’s strategy.  
+1. **Basic version** – initial setup, Markov Decision Process definition, basic heuristics
+2. **Optimized version** – parallel training with multiple environments, hyperparameter tuning
+3. **Final version** – vertical shooting, flying enemies, and homing missiles
 
 
 ## Training Progression
@@ -69,17 +79,20 @@ The agent was first trained with flying tanks and later extended with homing mis
 Initial runs showed unstable learning: cumulative rewards fluctuated around -10, episode lengths varied widely, and policy updates were inconsistent. This indicated difficulties in stable exploration and reward prediction.  
 
 <p align="center">
-  <img src="sources_readme/init_training1.png" alt="init_training1" width="250">
-  <img src="sources_readme/init_training2.png" alt="init_training2" width="250">
+  <img src="sources_readme/init_training1.png" alt="init_training1" width="250", height="200">
+  <img src="sources_readme/init_training2.png" alt="init_training2" width="250", height="200">
 </p>
 
-To improve stability, several adjustments were made: a slightly lower learning rate, larger batch and buffer sizes, reduced network depth, and higher curiosity strength. Entropy and reward signals were also tuned to encourage exploration and stabilize updates.  
+Key adjustments: a slightly lower learning rate, larger batch and buffer sizes, reduced network depth, and higher curiosity strength. Entropy and reward signals were also tuned to encourage exploration and stabilize updates.  
 
-<p align="center"><img src="plots/final_configs.png" alt="final_configs" width="500"></p>
+<p align="center"><img src="sources_readme/final_configs.png" alt="final_configs" width="500"></p>
 
 With these changes, the final version showed higher cumulative rewards, longer and more stable episodes, lower curiosity losses, and reduced policy loss, which enabled the agent to consistently win.  
 
 <p align="center">
-  <img src="sources_readme/final_training1.png" alt="final_training1" width="250">
-  <img src="sources_readme/final_training2.png" alt="final_training2" width="250">
+  <img src="sources_readme/final_training1.png" alt="final_training1" width="250", height="180">
+  <img src="sources_readme/final_training2.png" alt="final_training2" width="250", height="180">
 </p>
+
+
+
