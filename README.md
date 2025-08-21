@@ -81,18 +81,18 @@ Initial runs showed unstable learning: cumulative rewards fluctuated around -10,
 
 <p align="center">
   <img src="sources_readme/init_training1.png" alt="init_training1" width="250">
-  <img src="sources_readme/init_training2.png" alt="init_training2" width="250", height="300">
+  <img src="sources_readme/init_training2.png" alt="init_training2" width="250", height="1000">
 </p>
 
 Key adjustments: a slightly lower learning rate, larger batch and buffer sizes, reduced network depth, and higher curiosity strength. Entropy and reward signals were also tuned to encourage exploration and stabilize updates.  
 
-<p align="center"><img src="sources_readme/final_configs.png" alt="final_configs" width="250"></p>
+<p align="center"><img src="sources_readme/final_configs.png" alt="final_configs" width="150"></p>
 
 With these changes, the final version showed higher cumulative rewards, longer and more stable episodes, lower curiosity losses, and reduced policy loss, which enabled the agent to win consistently.  
 
 <p align="center">
   <img src="sources_readme/final_training1.png" alt="final_training1" width="250">
-  <img src="sources_readme/final_training2.png" alt="final_training2" width="250", height="500">
+  <img src="sources_readme/final_training2.png" alt="final_training2" width="250", height="800">
 </p>
 
 
