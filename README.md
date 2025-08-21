@@ -81,7 +81,7 @@ Initial runs showed unstable learning: cumulative rewards fluctuated around -10,
 
 <p align="center">
   <img src="sources_readme/init_training1.png" alt="init_training1" width="250">
-  <img src="sources_readme/init_training2.png" alt="init_training2" width="250", height="1000">
+  <img src="sources_readme/init_training2.png" alt="init_training2" width="250">
 </p>
 
 Key adjustments: a slightly lower learning rate, larger batch and buffer sizes, reduced network depth, and higher curiosity strength. Entropy and reward signals were also tuned to encourage exploration and stabilize updates.  
@@ -92,7 +92,7 @@ With these changes, the final version showed higher cumulative rewards, longer a
 
 <p align="center">
   <img src="sources_readme/final_training1.png" alt="final_training1" width="250">
-  <img src="sources_readme/final_training2.png" alt="final_training2" width="250", height="800">
+  <img src="sources_readme/final_training2.png" alt="final_training2" width="250">
 </p>
 
 
